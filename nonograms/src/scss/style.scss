@@ -1,1 +1,22 @@
 @import 'normalize.css';
+@import "variables.module";
+
+html {
+  font-size: 10px;
+}
+
+.page {
+  font-family: "Open Sans", sans-serif;
+  background-color: $color-white;
+}
+
+.page__wrapper {
+  max-width: 1440px;
+  height: auto;
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 80px;
+}

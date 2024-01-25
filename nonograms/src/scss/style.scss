@@ -1,5 +1,12 @@
 @import 'normalize.css';
 @import "variables.module";
+@import "header.module";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 html {
   font-size: 10px;

@@ -1,7 +1,16 @@
 export function createPage() {
   document.body.className = "page";
 
-  createElement("div", "page__wrapper", document.body, null, true);
+  const pageWrapper = createElement(
+    "div",
+    "page__wrapper",
+    document.body,
+    null,
+    true
+  );
+
+  const header = createElement("div", "header", pageWrapper);
+  createElement("h1", "header__title", header, "Nonogram");
 }
 
 function createElement(type, className, parent, textContent, prepend = false) {

@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  font-size: 4rem;
+  letter-spacing: 4px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  color: $color-main;
+  background-color: $color-accent;
+  transform: rotate(-2deg);
+  padding: 5px 25px;
+  margin: 0 auto;
+  cursor: default;
+  user-select: none;
+}

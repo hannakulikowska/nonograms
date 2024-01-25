@@ -1,7 +1,7 @@
 .game {
   display: grid;
   grid-gap: 1px;
-  background-color: $color-white;
+  background-color: transparent;
   margin: 0 auto;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .game__number-cell {
-  background-color: $background-numbers;
+  background-color: $color-main-light;
   color: $color-main;
   font-size: 10px;
   text-align: center;

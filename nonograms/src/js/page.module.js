@@ -1,33 +1,38 @@
-import { createGameFields } from "./game.module";
+import { createGameFields, createGameWrapper } from "./game.module";
+import {
+  createMenuItem,
+  createDropdownOptions,
+  optionsWrapper,
+} from "./menu.module";
+import { createHeader, menu } from "./header.module";
 
-export { topNumGrid, leftNumGrid, gameGrid };
+export { page };
 
-let topNumGrid;
-let leftNumGrid;
-let gameGrid;
+const page = document.body;
+const gameSizes = ["5x5", "10x10", "15x15"];
 
 export function createPage(size) {
-  document.body.className = "page";
+  size = 15;
 
-  const pageWrapper = createElement(
+  page.className = "page";
+  createHeader(page);
+  createMenuItem(menu, "Game sizes"); // Header Menu: Game sizes
+  createDropdownOptions(optionsWrapper, gameSizes);
+
+  const pageWrapper = createElement("div", "page__wrapper", page);
+
+  const mainContent = createElement("div", "main-content", pageWrapper);
+  createElement(
     "div",
-    "page__wrapper",
-    document.body,
-    null,
-    true
+    "main-content__control-panel control-panel",
+    mainContent
   );
 
-  const header = createElement("div", "header", pageWrapper);
-  createElement("h1", "header__title", header, "Nonogram");
-
-  const gameWrapper = createElement("div", "game", pageWrapper);
-  topNumGrid = createElement("div", "game__top-num-grid", gameWrapper);
-  leftNumGrid = createElement("div", "game__left-num-grid", gameWrapper);
-  gameGrid = createElement("div", "game__game-grid", gameWrapper);
-
-  size = 15;
+  createGameWrapper(mainContent);
   createGameFields(size);
 }
+
+// Create element
 
 export function createElement(
   type,

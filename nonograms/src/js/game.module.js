@@ -1,5 +1,9 @@
-import { topNumGrid, leftNumGrid, gameGrid } from "./page.module";
+// import { topNumGrid, leftNumGrid, gameGrid } from "./page.module";
 import { createElement } from "./page.module";
+
+let topNumGrid;
+let leftNumGrid;
+let gameGrid;
 
 export function createGameFields(size) {
   // Get `color-main` value
@@ -41,4 +45,15 @@ export function createGameFields(size) {
       cell.classList.toggle("game__game-cell_active")
     );
   }
+}
+
+export function createGameWrapper(parentElement) {
+  const gameWrapper = createElement(
+    "div",
+    "main-content__game game",
+    parentElement
+  );
+  topNumGrid = createElement("div", "game__top-num-grid", gameWrapper);
+  leftNumGrid = createElement("div", "game__left-num-grid", gameWrapper);
+  gameGrid = createElement("div", "game__game-grid", gameWrapper);
 }

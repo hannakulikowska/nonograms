@@ -50,10 +50,7 @@ function resizeHandler() {
 
 // Create all game fields
 export function createGameFields(size) {
-  // Get `color-main` value
-  const colorMain = getComputedStyle(document.documentElement).getPropertyValue(
-    "color-main"
-  );
+  const colorMain = "#454545";
 
   // Top numbers grid
   for (let i = 0; i < 5 * size; i++) {

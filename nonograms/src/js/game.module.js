@@ -4,7 +4,51 @@ import { createElement } from "./page.module";
 let topNumGrid;
 let leftNumGrid;
 let gameGrid;
+export let newSize;
 
+export function changeGameSize(size) {
+  // Extract size from value of the menu radiobutton
+  newSize = parseInt(size.split("x")[0]);
+
+  // Resize window
+  resizeHandler();
+  window.addEventListener("resize", () => resizeHandler());
+
+  // Clean game field
+  topNumGrid.innerHTML = "";
+  leftNumGrid.innerHTML = "";
+  gameGrid.innerHTML = "";
+
+  // Create new game fild with new selected size
+  createGameFields(newSize);
+}
+
+export function applyResponsiveStyles(newSize, cellSize, cellSizeSmall) {
+  const mediaQuery = window.matchMedia("(max-width: 668px)");
+
+  if (mediaQuery.matches) {
+    topNumGrid.style.gridTemplateRows = `repeat(5, ${cellSizeSmall}px)`;
+    topNumGrid.style.gridTemplateColumns = `repeat(${newSize}, ${cellSizeSmall}px)`;
+    leftNumGrid.style.gridTemplateRows = `repeat(${newSize}, ${cellSizeSmall}px)`;
+    leftNumGrid.style.gridTemplateColumns = `repeat(5, ${cellSizeSmall}px)`;
+    gameGrid.style.gridTemplateRows = `repeat(${newSize}, ${cellSizeSmall}px)`;
+    gameGrid.style.gridTemplateColumns = `repeat(${newSize}, ${cellSizeSmall}px)`;
+  } else {
+    topNumGrid.style.gridTemplateRows = `repeat(5, ${cellSize}px)`;
+    topNumGrid.style.gridTemplateColumns = `repeat(${newSize}, ${cellSize}px)`;
+    leftNumGrid.style.gridTemplateRows = `repeat(${newSize}, ${cellSize}px)`;
+    leftNumGrid.style.gridTemplateColumns = `repeat(5, ${cellSize}px)`;
+    gameGrid.style.gridTemplateRows = `repeat(${newSize}, ${cellSize}px)`;
+    gameGrid.style.gridTemplateColumns = `repeat(${newSize}, ${cellSize}px)`;
+  }
+}
+
+// Wrap the functions with parameters
+function resizeHandler() {
+  applyResponsiveStyles(newSize, 32, 20);
+}
+
+// Create all game fields
 export function createGameFields(size) {
   // Get `color-main` value
   const colorMain = getComputedStyle(document.documentElement).getPropertyValue(

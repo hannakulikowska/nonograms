@@ -1,4 +1,5 @@
 import { createElement } from "./page.module";
+import { changeGameSize } from "./game.module";
 export let optionsWrapper;
 
 // Menu Item
@@ -30,7 +31,12 @@ export function createDropdownOptions(parentElement, options) {
 
     if (index === 0) {
       input.checked = true;
-      console.log(`Game size is 5x5 by default`);
     }
+
+    input.addEventListener("change", function () {
+      if (this.checked) {
+        changeGameSize(this.value);
+      }
+    });
   });
 }

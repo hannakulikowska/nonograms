@@ -12,7 +12,7 @@ const page = document.body;
 const gameSizes = ["5x5", "10x10", "15x15"];
 
 export function createPage(size) {
-  size = 15;
+  size = 5;
 
   page.className = "page";
   createHeader(page);

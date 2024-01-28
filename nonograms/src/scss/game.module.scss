@@ -54,10 +54,13 @@
 }
 
 .game__number-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $color-main-light;
   color: $color-main;
-  font-size: 10px;
-  text-align: center;
+  font-size: 1em;
+  user-select: none;
 }
 
 @media screen and (max-width: 668px) {

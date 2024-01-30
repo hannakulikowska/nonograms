@@ -1,42 +1,30 @@
 import { createElement } from "./page.module";
-import { changeGameSize } from "./game.module";
-export let optionsWrapper;
+import { createModal } from "./modals.module";
+import { gameSizes } from "../../main";
 
-// Menu Item
+export let dropdownWrapper;
+let menuItem;
 
+// Menu Item (eg. "Select puzzle")
 export function createMenuItem(parentElement, text) {
-  // Menu: Game sizes
-  const menuItem = createElement("li", "menu__item", parentElement);
-  createElement("button", "menu__dropdown-button", menuItem, text);
-  optionsWrapper = createElement("div", "menu__options-wrapper", menuItem);
+  menuItem = createElement("li", "menu__item", parentElement, text);
 }
 
 // Dropdown options
+export function createDropdown() {
+  dropdownWrapper = createElement("ul", "menu__dropdown-wrapper", menuItem);
 
-export function createDropdownOptions(parentElement, options) {
-  options.forEach((option, index) => {
-    // labels
-    const label = createElement(
-      "label",
-      "menu__dropdown-option",
-      parentElement,
-      option
+  gameSizes.forEach((option) => {
+    const dropdownItem = createElement(
+      "li",
+      "menu__dropdown-item",
+      dropdownWrapper
     );
+    createElement("button", "menu__dropdown-button", dropdownItem, option);
 
-    // radiobuttons in labels
-    const input = createElement("input", "menu__option-input", label);
-    input.setAttribute("type", "radio");
-    input.setAttribute("name", "gameSize");
-    input.setAttribute("value", option); // value depending on option
-
-    if (index === 0) {
-      input.checked = true;
-    }
-
-    input.addEventListener("change", function () {
-      if (this.checked) {
-        changeGameSize(this.value);
-      }
+    dropdownItem.addEventListener("click", function () {
+      console.log(`Clicked ${option}`);
+      createModal(option);
     });
   });
 }

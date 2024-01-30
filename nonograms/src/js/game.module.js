@@ -1,28 +1,26 @@
 import { createElement } from "./page.module";
-import { matrix } from "./matrix.module";
 import { transformAndInvertMatrix } from "./topMatrix.module";
 import { transformLeftMatrix } from "./leftMatrix.module";
 
 export let topNumGrid;
 export let leftNumGrid;
 let gameGrid;
-export let newSize;
 
-export function changeGameSize(size) {
+export function changeGameSize(size, puzzleData) {
   // Extract size from value of the menu radiobutton
-  newSize = parseInt(size.split("x")[0]);
+  const newSize = size;
 
   // Resize window
-  resizeHandler();
-  window.addEventListener("resize", () => resizeHandler());
+  resizeHandler(newSize);
+  window.addEventListener("resize", () => resizeHandler(newSize));
 
-  // Clean game field
+  // Clean game fields
   topNumGrid.innerHTML = "";
   leftNumGrid.innerHTML = "";
   gameGrid.innerHTML = "";
 
   // Create new game fild with new selected size
-  createGameFields(newSize);
+  createGameFields(newSize, puzzleData);
 }
 
 export function applyResponsiveStyles(newSize, cellSize, cellSizeSmall) {
@@ -46,12 +44,12 @@ export function applyResponsiveStyles(newSize, cellSize, cellSizeSmall) {
 }
 
 // Wrap the functions with parameters
-function resizeHandler() {
+function resizeHandler(newSize) {
   applyResponsiveStyles(newSize, 32, 20);
 }
 
 // Create all game fields
-export function createGameFields(size) {
+export function createGameFields(size, puzzleData) {
   const colorMain = "#454545";
 
   // Top numbers grid
@@ -64,7 +62,7 @@ export function createGameFields(size) {
       number.style.borderRight = `1px solid ${colorMain}`;
     }
   }
-  const invertedMatrix = transformAndInvertMatrix(matrix);
+  const invertedMatrix = transformAndInvertMatrix(puzzleData); //!
   // Set invertedMatrix into topNumGrid cells
   for (let row = 0; row < invertedMatrix.length; row++) {
     for (let col = 0; col < invertedMatrix[row].length; col++) {
@@ -86,7 +84,7 @@ export function createGameFields(size) {
       number.style.borderBottom = `1px solid ${colorMain}`;
     }
   }
-  const transformedLeftMatrix = transformLeftMatrix(matrix);
+  const transformedLeftMatrix = transformLeftMatrix(puzzleData); //!
   for (let row = 0; row < transformedLeftMatrix.length; row++) {
     for (let col = 0; col < transformedLeftMatrix[row].length; col++) {
       const cellIndex = row * 5 + col;
@@ -114,7 +112,6 @@ export function createGameFields(size) {
       cell.classList.toggle("game__game-cell_active")
     );
   }
-  console.log("Matrix:", matrix);
 }
 
 export function createGameWrapper(parentElement) {

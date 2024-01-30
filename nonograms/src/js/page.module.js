@@ -1,21 +1,13 @@
 import { createGameFields, createGameWrapper } from "./game.module";
-import {
-  createMenuItem,
-  createDropdownOptions,
-  optionsWrapper,
-} from "./menu.module";
-import { createHeader, menu } from "./header.module";
+import { createHeader } from "./header.module";
 
 export { page };
 
 const page = document.body;
-const gameSizes = ["5x5", "10x10", "15x15"];
 
 export function createPage(size) {
   page.className = "page";
   createHeader(page);
-  createMenuItem(menu, "Game sizes"); // Header Menu: Game sizes
-  createDropdownOptions(optionsWrapper, gameSizes);
 
   const pageWrapper = createElement("div", "page__wrapper", page);
 
@@ -31,7 +23,6 @@ export function createPage(size) {
 }
 
 // Create element
-
 export function createElement(
   type,
   className,

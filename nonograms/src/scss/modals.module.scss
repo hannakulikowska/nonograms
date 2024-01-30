@@ -1,0 +1,105 @@
+.dialog {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: transparent;
+  border: none;
+  transition: 0.3s ease-in-out;
+}
+
+.dialog__inner-box {
+  background-color: $color-white;
+  max-width: 700px;
+  min-width: 300px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog::backdrop {
+  background-color: $color-main;
+  opacity: 0.95;
+}
+
+.dialog__close-button {
+  background-color: transparent;
+  width: fit-content;
+  border: none;
+  padding: 8px;
+  padding-bottom: 14px;
+  cursor: pointer;
+  align-self: flex-end;
+
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.close-button__item1 {
+  display: block;
+  rotate: 45deg;
+  width: 30px;
+  height: 4px;
+  background-color: $color-black;
+  transform: translate(3px, 3px);
+}
+
+.close-button__item2 {
+  display: block;
+  rotate: -45deg;
+  width: 30px;
+  height: 4px;
+  background-color: $color-black;
+}
+
+.dialog__title {
+  display: block;
+  height: 60px;
+  width: 100%;
+  color: $color-white;
+  line-height: 1;
+  font-size: 1.4em;
+  font-weight: 400;
+  text-align: center;
+  background-color: $color-secondary-light;
+  padding: 18px 50px;
+  cursor: default;
+  user-select: none;
+  margin: 0;
+}
+
+.dialog__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.dialog__name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+  height: 60px;
+  border: none;
+  background-color: $color-white;
+  color: $color-main;
+  font-size: 1.4em;
+  font-weight: 300;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $color-accent;
+    color: $color-white;
+  }
+}

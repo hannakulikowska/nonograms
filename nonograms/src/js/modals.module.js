@@ -72,7 +72,7 @@ export function createModal(selectedSize) {
     );
     nameButton.addEventListener("click", function () {
       openSelectedPuzzle(puzzle.size, puzzle.data);
-      console.log(`Click ${puzzle.size}`);
+      // console.log(`Click ${puzzle.size}`);
     });
   });
 

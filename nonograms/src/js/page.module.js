@@ -1,5 +1,6 @@
 import { createGameFields, createGameWrapper } from "./game.module";
 import { createHeader } from "./header.module";
+import { matrices } from "./matrix.module";
 
 export { page };
 
@@ -12,6 +13,7 @@ export function createPage(size) {
   const pageWrapper = createElement("div", "page__wrapper", page);
 
   const mainContent = createElement("div", "main-content", pageWrapper);
+
   createElement(
     "div",
     "main-content__control-panel control-panel",
@@ -19,7 +21,14 @@ export function createPage(size) {
   );
 
   createGameWrapper(mainContent);
-  createGameFields(size);
+
+  const firstPuzzle = Object.values(matrices).find(
+    (puzzle) => puzzle.size === size
+  );
+
+  if (firstPuzzle) {
+    createGameFields(size, firstPuzzle.data);
+  }
 }
 
 // Create element

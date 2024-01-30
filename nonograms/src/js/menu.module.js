@@ -23,7 +23,7 @@ export function createDropdown() {
     createElement("button", "menu__dropdown-button", dropdownItem, option);
 
     dropdownItem.addEventListener("click", function () {
-      console.log(`Clicked ${option}`);
+      // console.log(`Clicked ${option}`);
       createModal(option);
     });
   });

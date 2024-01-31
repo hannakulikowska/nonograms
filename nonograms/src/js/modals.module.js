@@ -25,13 +25,7 @@ function handleKeyDown(event) {
   }
 }
 
-export function createModal(selectedSize) {
-  const sizeNumber = parseInt(selectedSize.split("x")[0]);
-  // find objects with selected sizes
-  const puzzles = Object.values(matrices).filter(
-    (matrix) => matrix.size === sizeNumber
-  );
-
+export function createModal() {
   if (!dialog) {
     dialog = createElement("dialog", "dialog", page);
     dialogInnerBox = createElement("div", "dialog__inner-box", dialog);
@@ -48,12 +42,23 @@ export function createModal(selectedSize) {
     dialogInnerBox.innerHTML = "";
   }
 
-  createModalTitle(`Puzzle size: ${selectedSize}`);
-
   // event listeners
   closeButton.addEventListener("click", closeDialog);
   window.addEventListener("keydown", handleKeyDown);
 
+  showDialog();
+}
+
+// add content for dropdown menu modal
+export function displayPuzzleOptions(selectedSize) {
+  const sizeNumber = parseInt(selectedSize.split("x")[0]);
+  // find objects with selected sizes
+  const puzzles = Object.values(matrices).filter(
+    (matrix) => matrix.size === sizeNumber
+  );
+
+  // title
+  createModalTitle(`Puzzle size: ${selectedSize}`);
   // wrapper for dropdown options
   const dialogTextWrapper = createElement(
     "div",
@@ -72,11 +77,8 @@ export function createModal(selectedSize) {
     );
     nameButton.addEventListener("click", function () {
       openSelectedPuzzle(puzzle.size, puzzle.data);
-      // console.log(`Click ${puzzle.size}`);
     });
   });
-
-  showDialog();
 }
 
 // Create a title

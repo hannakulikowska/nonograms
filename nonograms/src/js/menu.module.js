@@ -1,5 +1,5 @@
 import { createElement } from "./page.module";
-import { createModal } from "./modals.module";
+import { createModal, displayPuzzleOptions } from "./modals.module";
 import { gameSizes } from "../../main";
 
 export let dropdownWrapper;
@@ -23,8 +23,8 @@ export function createDropdown() {
     createElement("button", "menu__dropdown-button", dropdownItem, option);
 
     dropdownItem.addEventListener("click", function () {
-      // console.log(`Clicked ${option}`);
-      createModal(option);
+      createModal();
+      displayPuzzleOptions(option);
     });
   });
 }

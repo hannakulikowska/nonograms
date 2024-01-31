@@ -1,3 +1,5 @@
+import { finishGame } from "./finishGame.module";
+
 let userMatrix = [];
 
 // Initialize userMatrix with zeros at the beginning of the game
@@ -18,6 +20,7 @@ export function handleCellClick(row, col) {
 export function checkSolution(puzzleData) {
   if (arraysAreEqual(userMatrix, puzzleData)) {
     console.log("Great! You have solved the nonogram!");
+    finishGame();
   }
 }
 

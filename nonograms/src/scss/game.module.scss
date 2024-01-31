@@ -44,14 +44,43 @@
   border: $border-thickness solid $color-main;
 }
 
+// game cells
+
 .game__game-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $color-white;
   cursor: pointer;
+}
+
+.game__cross1 {
+  position: absolute;
+
+  rotate: 45deg;
+  width: 20px;
+  height: 1px;
+  background-color: $color-black;
+}
+
+.game__cross2 {
+  position: absolute;
+
+  rotate: -45deg;
+  width: 20px;
+  height: 1px;
+  background-color: $color-black;
+}
+
+.game__cross_opacity {
+  opacity: 0;
 }
 
 .game__game-cell_active {
   background-color: $color-black;
 }
+
+// number cells
 
 .game__number-cell {
   display: flex;

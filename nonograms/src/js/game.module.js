@@ -99,6 +99,16 @@ export function createGameFields(size, puzzleData) {
   // Game field
   for (let i = 0; i < size * size; i++) {
     const cell = createElement("div", "game__game-cell", gameGrid);
+    const cross1 = createElement(
+      "span",
+      "game__cross1 game__cross_opacity",
+      cell
+    );
+    const cross2 = createElement(
+      "span",
+      "game__cross2 game__cross_opacity",
+      cell
+    );
 
     if ((i + 1) % size !== 0 && (i + 1) % 5 === 0) {
       cell.style.borderRight = `1px solid ${colorMain}`;
@@ -111,6 +121,12 @@ export function createGameFields(size, puzzleData) {
     cell.addEventListener("click", () =>
       cell.classList.toggle("game__game-cell_active")
     );
+
+    cell.addEventListener("contextmenu", function (event) {
+      event.preventDefault();
+      cross1.classList.toggle("game__cross_opacity");
+      cross2.classList.toggle("game__cross_opacity");
+    });
   }
 }
 

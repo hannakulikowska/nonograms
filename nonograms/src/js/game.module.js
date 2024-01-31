@@ -1,6 +1,11 @@
 import { createElement } from "./page.module";
 import { transformAndInvertMatrix } from "./topMatrix.module";
 import { transformLeftMatrix } from "./leftMatrix.module";
+import {
+  initializeUserMatrix,
+  handleCellClick,
+  checkSolution,
+} from "./userMatrix.module";
 
 export let topNumGrid;
 export let leftNumGrid;
@@ -21,6 +26,7 @@ export function changeGameSize(size, puzzleData) {
 
   // Create new game fild with new selected size
   createGameFields(newSize, puzzleData);
+  initializeUserMatrix(newSize);
 }
 
 export function applyResponsiveStyles(newSize, cellSize, cellSizeSmall) {
@@ -118,9 +124,17 @@ export function createGameFields(size, puzzleData) {
       cell.style.borderBottom = `1px solid ${colorMain}`;
     }
 
-    cell.addEventListener("click", () =>
-      cell.classList.toggle("game__game-cell_active")
-    );
+    // determine cell coordinates in userMatrix
+    const row = Math.floor(i / size);
+    const col = i % size;
+
+    // event listeners for cells
+
+    cell.addEventListener("click", function () {
+      cell.classList.toggle("game__game-cell_active");
+      handleCellClick(row, col);
+      checkSolution(puzzleData);
+    });
 
     cell.addEventListener("contextmenu", function (event) {
       event.preventDefault();

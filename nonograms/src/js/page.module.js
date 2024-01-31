@@ -1,6 +1,7 @@
 import { createGameFields, createGameWrapper } from "./game.module";
 import { createHeader } from "./header.module";
 import { matrices } from "./matrix.module";
+import { initializeUserMatrix } from "./userMatrix.module";
 
 export { page };
 
@@ -28,6 +29,7 @@ export function createPage(size) {
 
   if (firstPuzzle) {
     createGameFields(size, firstPuzzle.data);
+    initializeUserMatrix(size);
   }
 }
 

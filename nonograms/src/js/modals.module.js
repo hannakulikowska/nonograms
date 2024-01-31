@@ -35,7 +35,6 @@ export function createModal() {
       dialog
     );
 
-    closeButton.setAttribute("autofocus", "");
     createElement("span", "close-button__item1", closeButton);
     createElement("span", "close-button__item2", closeButton);
   } else {
@@ -82,7 +81,7 @@ export function displayPuzzleOptions(selectedSize) {
 }
 
 // Create a title
-function createModalTitle(text) {
+export function createModalTitle(text) {
   createElement("h3", "dialog__title", dialogInnerBox, text);
 }
 

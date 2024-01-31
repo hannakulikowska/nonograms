@@ -11,6 +11,11 @@
   box-sizing: border-box;
 }
 
+dialog:focus,
+button:focus {
+  outline: none;
+}
+
 .page {
   font-family: "Open Sans", sans-serif;
   background-color: $color-white;

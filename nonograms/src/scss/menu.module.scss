@@ -21,6 +21,7 @@
   background-color: $color-main;
   margin: 0;
   transition: 0.2s ease-in-out;
+  white-space: nowrap;
   cursor: pointer;
 
   &:hover {
@@ -40,8 +41,7 @@
 
   list-style-type: none;
   display: none;
-  width: auto;
-  min-width: 146.92px;
+
   background-color: $color-white;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 
@@ -49,7 +49,7 @@
 }
 
 .menu__dropdown-button {
-  font-size: 1.2em;
+  font-size: 0.9em;
   text-align: left;
   color: $color-main;
   border: none;
@@ -59,6 +59,7 @@
   background-color: inherit;
   margin: 0;
   transition: 0.2s ease-in-out;
+  white-space: nowrap;
   cursor: pointer;
 
   &:hover {

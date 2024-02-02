@@ -7,7 +7,11 @@ export { page };
 
 const page = document.body;
 
+// Create page *** START
+
 export function createPage(size) {
+  // page
+
   page.className = "page";
   createHeader(page);
 
@@ -15,11 +19,7 @@ export function createPage(size) {
 
   const mainContent = createElement("div", "main-content", pageWrapper);
 
-  createElement(
-    "div",
-    "main-content__control-panel control-panel",
-    mainContent
-  );
+  // game
 
   createGameWrapper(mainContent);
 
@@ -31,9 +31,18 @@ export function createPage(size) {
     createGameFields(size, firstPuzzle.data);
     initializeUserMatrix(size);
   }
+
+  createElement(
+    "div",
+    "main-content__control-panel control-panel",
+    mainContent
+  );
 }
 
-// Create element
+// Create page *** END
+
+// Create element *** START
+
 export function createElement(
   type,
   className,
@@ -57,3 +66,5 @@ export function createElement(
   }
   return element;
 }
+
+// Create element *** END

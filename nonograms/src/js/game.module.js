@@ -30,7 +30,7 @@ export function changeGameSize(size, puzzleData) {
 }
 
 export function applyResponsiveStyles(newSize, cellSize, cellSizeSmall) {
-  const mediaQuery = window.matchMedia("(max-width: 668px)");
+  const mediaQuery = window.matchMedia("(max-width: 749px)");
 
   if (mediaQuery.matches) {
     topNumGrid.style.gridTemplateRows = `repeat(5, ${cellSizeSmall}px)`;
@@ -68,7 +68,7 @@ export function createGameFields(size, puzzleData) {
       number.style.borderRight = `1px solid ${colorMain}`;
     }
   }
-  const invertedMatrix = transformAndInvertMatrix(puzzleData); //!
+  const invertedMatrix = transformAndInvertMatrix(puzzleData);
   // Set invertedMatrix into topNumGrid cells
   for (let row = 0; row < invertedMatrix.length; row++) {
     for (let col = 0; col < invertedMatrix[row].length; col++) {
@@ -90,7 +90,7 @@ export function createGameFields(size, puzzleData) {
       number.style.borderBottom = `1px solid ${colorMain}`;
     }
   }
-  const transformedLeftMatrix = transformLeftMatrix(puzzleData); //!
+  const transformedLeftMatrix = transformLeftMatrix(puzzleData);
   for (let row = 0; row < transformedLeftMatrix.length; row++) {
     for (let col = 0; col < transformedLeftMatrix[row].length; col++) {
       const cellIndex = row * 5 + col;

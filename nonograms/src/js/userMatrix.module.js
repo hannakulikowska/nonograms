@@ -1,4 +1,5 @@
 import { finishGame } from "./finishGame.module";
+import { stopTime } from "./stopWatch.module";
 
 let userMatrix = [];
 
@@ -20,6 +21,7 @@ export function handleCellClick(row, col) {
 export function checkSolution(puzzleData) {
   if (arraysAreEqual(userMatrix, puzzleData)) {
     console.log("Great! You have solved the nonogram!");
+    stopTime();
     finishGame();
   }
 }

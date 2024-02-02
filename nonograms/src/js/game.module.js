@@ -6,7 +6,9 @@ import {
   handleCellClick,
   checkSolution,
 } from "./userMatrix.module";
+import { insertStopWatchElement, startTime } from "./stopWatch.module";
 
+export let gameWrapper;
 export let topNumGrid;
 export let leftNumGrid;
 let gameGrid;
@@ -134,22 +136,24 @@ export function createGameFields(size, puzzleData) {
       cell.classList.toggle("game__game-cell_active");
       handleCellClick(row, col);
       checkSolution(puzzleData);
+
+      startTime();
     });
 
     cell.addEventListener("contextmenu", function (event) {
       event.preventDefault();
       cross1.classList.toggle("game__cross_opacity");
       cross2.classList.toggle("game__cross_opacity");
+      startTime();
     });
   }
 }
 
 export function createGameWrapper(parentElement) {
-  const gameWrapper = createElement(
-    "div",
-    "main-content__game game",
-    parentElement
-  );
+  gameWrapper = createElement("div", "main-content__game game", parentElement);
+
+  insertStopWatchElement();
+
   topNumGrid = createElement("div", "game__top-num-grid", gameWrapper);
   leftNumGrid = createElement("div", "game__left-num-grid", gameWrapper);
   gameGrid = createElement("div", "game__game-grid", gameWrapper);

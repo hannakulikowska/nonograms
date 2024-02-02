@@ -2,6 +2,7 @@ import { page } from "./page.module";
 import { createElement } from "./page.module";
 import { matrices } from "./matrix.module";
 import { changeGameSize } from "./game.module";
+import { resetTime } from "./stopWatch.module";
 
 let dialog;
 let dialogInnerBox;
@@ -74,8 +75,10 @@ export function displayPuzzleOptions(selectedSize) {
       dialogTextWrapper,
       puzzle.name
     );
+
     nameButton.addEventListener("click", function () {
       openSelectedPuzzle(puzzle.size, puzzle.data);
+      resetTime();
     });
   });
 }

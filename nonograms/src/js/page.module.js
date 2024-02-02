@@ -2,6 +2,7 @@ import { createGameFields, createGameWrapper } from "./game.module";
 import { createHeader } from "./header.module";
 import { matrices } from "./matrix.module";
 import { initializeUserMatrix } from "./userMatrix.module";
+import { resetTime } from "./stopWatch.module";
 
 export { page };
 
@@ -37,6 +38,8 @@ export function createPage(size) {
     "main-content__control-panel control-panel",
     mainContent
   );
+
+  resetTime();
 }
 
 // Create page *** END

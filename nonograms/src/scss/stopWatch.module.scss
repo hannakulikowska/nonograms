@@ -1,0 +1,22 @@
+.stop-watch {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  user-select: none;
+}
+
+.stop-watch__title {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.stop-watch__title,
+.stop-watch__minutes,
+.stop-watch__seconds {
+  font-weight: 300;
+  font-size: 1.2em;
+  color: $color-main;
+}

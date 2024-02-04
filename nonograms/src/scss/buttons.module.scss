@@ -1,0 +1,21 @@
+.side-panel__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid $color-main-light;
+  background-color: transparent;
+  color: $color-main;
+  font-size: 0.8em;
+
+  width: 75px;
+  height: 55px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.side-panel__button:hover {
+  color: $color-white;
+  background-color: $color-accent;
+  border-color: $color-accent;
+}

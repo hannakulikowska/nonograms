@@ -96,7 +96,7 @@
   user-select: none;
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 700px) {
   .game__top-num-grid {
     grid-template-rows: repeat(5, $size-cell-sm);
     grid-template-columns: repeat($size-game, $size-cell-sm);

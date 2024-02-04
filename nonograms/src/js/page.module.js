@@ -3,10 +3,12 @@ import { createHeader } from "./header.module";
 import { matrices } from "./matrix.module";
 import { initializeUserMatrix } from "./userMatrix.module";
 import { resetTime } from "./stopWatch.module";
+import { createButtons } from "./buttons.module";
 
 export { page };
 
 const page = document.body;
+export let sidePanel;
 
 // Create page *** START
 
@@ -19,6 +21,16 @@ export function createPage(size) {
   const pageWrapper = createElement("div", "page__wrapper", page);
 
   const mainContent = createElement("div", "main-content", pageWrapper);
+
+  // side panel
+
+  sidePanel = createElement(
+    "div",
+    "main-content__side-panel side-panel",
+    mainContent
+  );
+
+  createButtons(sidePanel);
 
   // game
 
@@ -37,12 +49,6 @@ export function createPage(size) {
       JSON.stringify({ name: firstPuzzle.name, size: firstPuzzle.size })
     );
   }
-
-  createElement(
-    "div",
-    "main-content__control-panel control-panel",
-    mainContent
-  );
 
   resetTime();
 }

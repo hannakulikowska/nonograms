@@ -32,7 +32,7 @@ export function changeGameSize(size, puzzleData) {
 }
 
 export function applyResponsiveStyles(newSize, cellSize, cellSizeSmall) {
-  const mediaQuery = window.matchMedia("(max-width: 749px)");
+  const mediaQuery = window.matchMedia("(max-width: 700px)");
 
   if (mediaQuery.matches) {
     topNumGrid.style.gridTemplateRows = `repeat(5, ${cellSizeSmall}px)`;

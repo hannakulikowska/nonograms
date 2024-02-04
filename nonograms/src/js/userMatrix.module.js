@@ -17,6 +17,11 @@ export function handleCellClick(row, col) {
   userMatrix[row][col] = userMatrix[row][col] === 1 ? 0 : 1;
 }
 
+// Export userMatrix
+export function getUserMatrix() {
+  return userMatrix;
+}
+
 // If the user won, then stop and save time to Local Storage,
 export function checkSolution(puzzleData) {
   if (arraysAreEqual(userMatrix, puzzleData)) {

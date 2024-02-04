@@ -22,13 +22,17 @@ export function changeGameSize(size, puzzleData) {
   window.addEventListener("resize", () => resizeHandler(newSize));
 
   // Clean game fields
-  topNumGrid.innerHTML = "";
-  leftNumGrid.innerHTML = "";
-  gameGrid.innerHTML = "";
+  cleanGameFields();
 
   // Create new game fild with new selected size
   createGameFields(newSize, puzzleData);
   initializeUserMatrix(newSize);
+}
+
+export function cleanGameFields() {
+  topNumGrid.innerHTML = "";
+  leftNumGrid.innerHTML = "";
+  gameGrid.innerHTML = "";
 }
 
 export function applyResponsiveStyles(newSize, cellSize, cellSizeSmall) {

@@ -27,6 +27,5 @@ export function transformLeftMatrix(matrix) {
     }
   }
 
-  // console.log("leftMatrix:", newMatrix);
   return newMatrix;
 }

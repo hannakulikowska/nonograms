@@ -1,4 +1,5 @@
 import { createModal, createModalTitle } from "./modals.module";
+import { createScoreButtons } from "./menu.module";
 
 // Additional acts to finish a game
 export function finishGame() {
@@ -21,7 +22,16 @@ export function finishGame() {
 
   // create modal to display information about winning the game
   setTimeout(() => {
+    createScoreButtons();
+
     createModal();
-    createModalTitle("Great! You have solved the nonogram!");
+    // Retrieve the current puzzle from Local Storage
+    const currentPuzzle = JSON.parse(localStorage.getItem("currentPuzzle"));
+
+    const modalTitleElement = createModalTitle(
+      `Great! You have solved the nonogram in ${currentPuzzle.totalTime} seconds!`
+    );
+
+    modalTitleElement.style.padding = "50px";
   }, 2000);
 }

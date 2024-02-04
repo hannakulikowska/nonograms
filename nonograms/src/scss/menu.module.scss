@@ -67,3 +67,18 @@
     background-color: $color-accent;
   }
 }
+
+.menu__dropdown-item_no-data {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: auto;
+  background-color: $color-white;
+  color: $color-main;
+  font-size: 0.9em;
+}
+
+.menu__dropdown-button_no-data,
+.menu__score .menu__dropdown-button {
+  cursor: default;
+}

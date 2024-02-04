@@ -1,8 +1,8 @@
 import { gameWrapper } from "./game.module";
 import { createElement } from "./page.module";
 
-let minutesSpan;
-let secondsSpan;
+export let minutesSpan;
+export let secondsSpan;
 
 export function insertStopWatchElement() {
   const stopWatch = createElement(
@@ -44,8 +44,19 @@ export const startTime = () => {
   }
 };
 
+// Stop stop-watch and save time of the current game
 export const stopTime = () => {
   clearInterval(interval);
+};
+
+export const saveTime = () => {
+  // Retrieve the current puzzle from Local Storage
+  const currentPuzzle = JSON.parse(localStorage.getItem("currentPuzzle"));
+  // Add time to the currentPuzzle object
+  currentPuzzle.totalTime =
+    Number(minutesSpan.innerHTML * 60) + Number(secondsSpan.innerHTML);
+  // Save the updated object back to localStorage
+  localStorage.setItem("currentPuzzle", JSON.stringify(currentPuzzle));
 };
 
 export const resetTime = () => {

@@ -31,6 +31,11 @@ export function createPage(size) {
   if (firstPuzzle) {
     createGameFields(size, firstPuzzle.data);
     initializeUserMatrix(size);
+    // save data about first puzzle to Local Storage - name and size
+    localStorage.setItem(
+      "currentPuzzle",
+      JSON.stringify({ name: firstPuzzle.name, size: firstPuzzle.size })
+    );
   }
 
   createElement(

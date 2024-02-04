@@ -1,5 +1,7 @@
 import { finishGame } from "./finishGame.module";
 import { stopTime } from "./stopWatch.module";
+import { resultsData } from "./results.module";
+import { saveTime } from "./stopWatch.module";
 
 let userMatrix = [];
 
@@ -8,24 +10,24 @@ export function initializeUserMatrix(size) {
   userMatrix = Array(size)
     .fill()
     .map(() => Array(size).fill(0));
-  console.log("userMatrix:", userMatrix);
 }
 
 // Handle click on cells
 export function handleCellClick(row, col) {
   userMatrix[row][col] = userMatrix[row][col] === 1 ? 0 : 1;
-  console.log("Update userMatrix", userMatrix);
 }
 
-// Comparison of userMatrix with the original matrix
+// If the user won, then stop and save time to Local Storage,
 export function checkSolution(puzzleData) {
   if (arraysAreEqual(userMatrix, puzzleData)) {
-    console.log("Great! You have solved the nonogram!");
     stopTime();
+    saveTime();
+    resultsData();
     finishGame();
   }
 }
 
+// Comparison of userMatrix with the original matrix
 function arraysAreEqual(arr1, arr2) {
   for (let i = 0; i < arr1.length; i++) {
     for (let j = 0; j < arr1.length; j++) {

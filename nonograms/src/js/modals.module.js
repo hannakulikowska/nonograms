@@ -49,7 +49,6 @@ export function createModal() {
   showDialog();
 }
 
-// add content for dropdown menu modal
 export function displayPuzzleOptions(selectedSize) {
   const sizeNumber = parseInt(selectedSize.split("x")[0]);
   // find objects with selected sizes
@@ -79,13 +78,19 @@ export function displayPuzzleOptions(selectedSize) {
     nameButton.addEventListener("click", function () {
       openSelectedPuzzle(puzzle.size, puzzle.data);
       resetTime();
+      // save current puzzle data to local storage - name and size
+      localStorage.setItem(
+        "currentPuzzle",
+        JSON.stringify({ name: puzzle.name, size: puzzle.size })
+      );
     });
   });
 }
 
 // Create a title
 export function createModalTitle(text) {
-  createElement("h3", "dialog__title", dialogInnerBox, text);
+  const modalTitle = createElement("h3", "dialog__title", dialogInnerBox, text);
+  return modalTitle;
 }
 
 // Open selected puzzle by clicking a name button in the menu

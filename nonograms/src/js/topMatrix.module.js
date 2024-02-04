@@ -10,7 +10,6 @@ export function transformAndInvertMatrix(matrix) {
     }
   }
 
-  // console.log("topMatrix:", invertedMatrix);
   return invertedMatrix;
 }
 

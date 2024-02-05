@@ -1,7 +1,7 @@
 import { changeGameSize } from "./game.module";
 import { matrices } from "./matrix.module";
 import { createElement } from "./page.module";
-import { resetTime } from "./stopWatch.module";
+import { resetTime, titleName, titleSize } from "./stopWatch.module";
 import { initializeUserMatrix, getUserMatrix } from "./userMatrix.module";
 
 let resetButton;
@@ -79,6 +79,10 @@ function updateOpacity(elements) {
 function clickRandomButton() {
   const puzzle = getRandomPuzzle();
   changeGameSize(puzzle.size, puzzle.data);
+
+  // update current puzzle title
+  titleSize.innerHTML = `${puzzle.size}x${puzzle.size}`;
+  titleName.innerHTML = puzzle.name;
 }
 
 function getRandomPuzzle() {

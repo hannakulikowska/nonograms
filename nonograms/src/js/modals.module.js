@@ -2,7 +2,7 @@ import { page } from "./page.module";
 import { createElement } from "./page.module";
 import { matrices } from "./matrix.module";
 import { changeGameSize } from "./game.module";
-import { resetTime } from "./stopWatch.module";
+import { resetTime, titleName, titleSize } from "./stopWatch.module";
 
 let dialog;
 let dialogInnerBox;
@@ -77,6 +77,9 @@ export function displayPuzzleOptions(selectedSize) {
 
     nameButton.addEventListener("click", function () {
       openSelectedPuzzle(puzzle.size, puzzle.data);
+      // update current puzzle title
+      titleSize.innerHTML = `${puzzle.size}x${puzzle.size}`;
+      titleName.innerHTML = puzzle.name;
       resetTime();
       // save current puzzle data to local storage - name and size
       localStorage.setItem(

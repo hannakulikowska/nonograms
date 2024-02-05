@@ -111,4 +111,8 @@
     grid-template-rows: repeat($size-game, $size-cell-sm);
     grid-template-columns: repeat($size-game, $size-cell-sm);
   }
+
+  .game__number-cell {
+    font-size: 0.8em;
+  }
 }

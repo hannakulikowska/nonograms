@@ -6,7 +6,11 @@ import {
   handleCellClick,
   checkSolution,
 } from "./userMatrix.module";
-import { insertStopWatchElement, startTime } from "./stopWatch.module";
+import {
+  insertStopWatchElement,
+  startTime,
+  stopWatch,
+} from "./stopWatch.module";
 
 export let gameWrapper;
 export let topNumGrid;
@@ -156,7 +160,7 @@ export function createGameFields(size, puzzleData) {
 export function createGameWrapper(parentElement) {
   gameWrapper = createElement("div", "main-content__game game", parentElement);
 
-  insertStopWatchElement();
+  insertStopWatchElement(stopWatch);
 
   topNumGrid = createElement("div", "game__top-num-grid", gameWrapper);
   leftNumGrid = createElement("div", "game__left-num-grid", gameWrapper);

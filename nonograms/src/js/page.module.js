@@ -2,7 +2,7 @@ import { createGameFields, createGameWrapper } from "./game.module";
 import { createHeader } from "./header.module";
 import { matrices } from "./matrix.module";
 import { initializeUserMatrix } from "./userMatrix.module";
-import { resetTime } from "./stopWatch.module";
+import { resetTime, titleName, titleSize } from "./stopWatch.module";
 import { createButtons } from "./buttons.module";
 
 export { page };
@@ -48,6 +48,8 @@ export function createPage(size) {
       "currentPuzzle",
       JSON.stringify({ name: firstPuzzle.name, size: firstPuzzle.size })
     );
+    titleSize.innerHTML = `${firstPuzzle.size}x${firstPuzzle.size}`;
+    titleName.innerHTML = firstPuzzle.name;
   }
 
   resetTime();

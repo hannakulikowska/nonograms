@@ -12,6 +12,11 @@
   height: 55px;
   padding: 5px;
   cursor: pointer;
+
+  &:disabled {
+    background-color: $color-main-light;
+    cursor: not-allowed;
+  }
 }
 
 .side-panel__button:hover {

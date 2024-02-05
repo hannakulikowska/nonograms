@@ -11,6 +11,7 @@ import {
   startTime,
   stopWatch,
 } from "./stopWatch.module";
+import { disabledButton, saveButton } from "./buttons.module";
 
 export let gameWrapper;
 export let topNumGrid;
@@ -146,6 +147,7 @@ export function createGameFields(size, puzzleData) {
       checkSolution(puzzleData);
 
       startTime();
+      disabledButton(saveButton, false);
     });
 
     cell.addEventListener("contextmenu", function (event) {
@@ -153,6 +155,7 @@ export function createGameFields(size, puzzleData) {
       cross1.classList.toggle("game__cross_opacity");
       cross2.classList.toggle("game__cross_opacity");
       startTime();
+      disabledButton(saveButton, false);
     });
   }
 }

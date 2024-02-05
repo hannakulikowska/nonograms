@@ -49,7 +49,13 @@ export const startTime = () => {
 
 // Stop stop-watch and save time of the current game
 export const stopTime = () => {
+  // isWatchTimeStarted = false;
   clearInterval(interval);
+};
+
+// Check if stop-watch
+export const isWatchStarted = () => {
+  return isWatchTimeStarted;
 };
 
 export const saveTime = () => {

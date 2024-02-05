@@ -3,7 +3,7 @@ import { createHeader } from "./header.module";
 import { matrices } from "./matrix.module";
 import { initializeUserMatrix } from "./userMatrix.module";
 import { resetTime, titleName, titleSize } from "./stopWatch.module";
-import { createButtons } from "./buttons.module";
+import { createButtons, disabledButton, saveButton } from "./buttons.module";
 
 export { page };
 
@@ -50,6 +50,7 @@ export function createPage(size) {
     );
     titleSize.innerHTML = `${firstPuzzle.size}x${firstPuzzle.size}`;
     titleName.innerHTML = firstPuzzle.name;
+    disabledButton(saveButton);
   }
 
   resetTime();

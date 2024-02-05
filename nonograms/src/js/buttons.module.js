@@ -3,9 +3,11 @@ import { matrices } from "./matrix.module";
 import { createElement } from "./page.module";
 import { resetTime, titleName, titleSize } from "./stopWatch.module";
 import { initializeUserMatrix, getUserMatrix } from "./userMatrix.module";
+import { clickSaveButton } from "./save.module";
 
 let resetButton;
 let randomButton;
+export let saveButton;
 
 export function createButtons(parentElement) {
   resetButton = createElement(
@@ -20,7 +22,7 @@ export function createButtons(parentElement) {
     parentElement,
     "Random"
   );
-  createElement(
+  saveButton = createElement(
     "button",
     "side-panel__button side-panel__save-button",
     parentElement,
@@ -42,15 +44,17 @@ export function createButtons(parentElement) {
   // Event listeners for all buttons
   resetButton.addEventListener("click", clickResetButton);
   randomButton.addEventListener("click", clickRandomButton);
+  saveButton.addEventListener("click", clickSaveButton);
 }
 
 // Reset button *** START
 
-function clickResetButton() {
+export function clickResetButton() {
   const size = getUserMatrix().length;
   resetGameField(size);
   initializeUserMatrix(size);
   resetTime();
+  disabledButton(saveButton);
 }
 
 function resetGameField() {
@@ -94,3 +98,11 @@ function getRandomPuzzle() {
 }
 
 // Random button *** END
+
+// Disabled *** START
+
+export function disabledButton(button, mode = "true") {
+  button.disabled = mode;
+}
+
+// Disabled *** END

@@ -1,9 +1,11 @@
+import { changeGameSize } from "./game.module";
+import { matrices } from "./matrix.module";
 import { createElement } from "./page.module";
 import { resetTime } from "./stopWatch.module";
 import { initializeUserMatrix, getUserMatrix } from "./userMatrix.module";
 
 let resetButton;
-let size;
+let randomButton;
 
 export function createButtons(parentElement) {
   resetButton = createElement(
@@ -12,7 +14,7 @@ export function createButtons(parentElement) {
     parentElement,
     "Reset"
   );
-  createElement(
+  randomButton = createElement(
     "button",
     "side-panel__button side-panel__random-button",
     parentElement,
@@ -39,10 +41,13 @@ export function createButtons(parentElement) {
 
   // Event listeners for all buttons
   resetButton.addEventListener("click", clickResetButton);
+  randomButton.addEventListener("click", clickRandomButton);
 }
 
+// Reset button *** START
+
 function clickResetButton() {
-  size = getUserMatrix().length;
+  const size = getUserMatrix().length;
   resetGameField(size);
   initializeUserMatrix(size);
   resetTime();
@@ -66,3 +71,20 @@ function updateOpacity(elements) {
     element.classList.add("game__cross_opacity");
   });
 }
+
+// Reset button *** END
+
+// Random button *** START
+
+function clickRandomButton() {
+  const puzzle = getRandomPuzzle();
+  changeGameSize(puzzle.size, puzzle.data);
+}
+
+function getRandomPuzzle() {
+  const keys = Object.keys(matrices);
+  const randomKey = keys[Math.floor(Math.random() * keys.length)];
+  return matrices[randomKey];
+}
+
+// Random button *** END

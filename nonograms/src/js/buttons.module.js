@@ -77,6 +77,8 @@ function updateOpacity(elements) {
 // Random button *** START
 
 function clickRandomButton() {
+  clickResetButton();
+
   const puzzle = getRandomPuzzle();
   changeGameSize(puzzle.size, puzzle.data);
 

@@ -1,10 +1,12 @@
 import { createModal, createModalTitle } from "./modals.module";
 import { createScoreButtons } from "./menu.module";
+import { disabledButton, saveButton } from "./buttons.module";
 
 // Additional acts to finish a game
 export function finishGame() {
   // display all crosses on the game field
   setTimeout(() => {
+    disabledButton(saveButton, true);
     // find all cells and crosses of the game field
     const allCrosses1 = document.querySelectorAll(".game__cross1");
     const allCrosses2 = document.querySelectorAll(".game__cross2");

@@ -40,16 +40,25 @@ export function timeLogic() {
 
 let isWatchTimeStarted = false;
 
-export const startTime = () => {
+export function startTime(initialMinutes = 0, initialSeconds = 0) {
   if (!isWatchTimeStarted) {
+    minutes = initialMinutes;
+    seconds = initialSeconds;
+
+    updateDisplayTime();
+
     interval = setInterval(timeLogic, 1000);
     isWatchTimeStarted = true;
   }
-};
+}
+
+function updateDisplayTime() {
+  secondsSpan.innerHTML = seconds < 10 ? `0${seconds}` : seconds;
+  minutesSpan.innerHTML = minutes < 10 ? `0${minutes}` : minutes;
+}
 
 // Stop stop-watch and save time of the current game
 export const stopTime = () => {
-  // isWatchTimeStarted = false;
   clearInterval(interval);
 };
 
@@ -71,8 +80,9 @@ export const saveTime = () => {
 export const resetTime = () => {
   seconds = 0;
   minutes = 0;
-  secondsSpan.innerHTML = "00";
-  minutesSpan.innerHTML = "00";
+
+  updateDisplayTime();
+
   clearInterval(interval);
   isWatchTimeStarted = false;
 };

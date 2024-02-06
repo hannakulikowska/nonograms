@@ -11,7 +11,7 @@ import {
   startTime,
   stopWatch,
 } from "./stopWatch.module";
-import { disabledButton, saveButton } from "./buttons.module";
+import { disabledButton, resetButton, saveButton } from "./buttons.module";
 
 export let gameWrapper;
 export let topNumGrid;
@@ -116,6 +116,26 @@ export function createGameFields(size, puzzleData) {
   // Game field
   for (let i = 0; i < size * size; i++) {
     const cell = createElement("div", "game__game-cell", gameGrid);
+
+    // add attributes to identificate cells
+    cell.dataset.row = Math.floor(i / size);
+    cell.dataset.col = i % size;
+
+    // determine cell coordinates in userMatrix
+    const row = Math.floor(i / size);
+    const col = i % size;
+
+    // styles for cells
+    if ((i + 1) % size !== 0 && (i + 1) % 5 === 0) {
+      cell.style.borderRight = `1px solid ${colorMain}`;
+    }
+
+    if (i < size * size - size && Math.floor(i / size) % 5 === 4) {
+      cell.style.borderBottom = `1px solid ${colorMain}`;
+    }
+
+    // create crosses
+
     const cross1 = createElement(
       "span",
       "game__cross1 game__cross_opacity",
@@ -127,18 +147,6 @@ export function createGameFields(size, puzzleData) {
       cell
     );
 
-    if ((i + 1) % size !== 0 && (i + 1) % 5 === 0) {
-      cell.style.borderRight = `1px solid ${colorMain}`;
-    }
-
-    if (i < size * size - size && Math.floor(i / size) % 5 === 4) {
-      cell.style.borderBottom = `1px solid ${colorMain}`;
-    }
-
-    // determine cell coordinates in userMatrix
-    const row = Math.floor(i / size);
-    const col = i % size;
-
     // event listeners for cells
 
     cell.addEventListener("click", function () {
@@ -148,6 +156,7 @@ export function createGameFields(size, puzzleData) {
 
       startTime();
       disabledButton(saveButton, false);
+      disabledButton(resetButton, false);
     });
 
     cell.addEventListener("contextmenu", function (event) {
@@ -156,6 +165,7 @@ export function createGameFields(size, puzzleData) {
       cross2.classList.toggle("game__cross_opacity");
       startTime();
       disabledButton(saveButton, false);
+      disabledButton(resetButton, false);
     });
   }
 }

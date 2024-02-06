@@ -1,13 +1,13 @@
-import { changeGameSize } from "./game.module";
-import { matrices } from "./matrix.module";
 import { createElement } from "./page.module";
-import { resetTime, titleName, titleSize } from "./stopWatch.module";
-import { initializeUserMatrix, getUserMatrix } from "./userMatrix.module";
 import { clickSaveButton } from "./save.module";
+import { clickContinueButton } from "./continue.module";
+import { clickResetButton } from "./reset.module";
+import { clickRandomButton } from "./random.module";
 
-let resetButton;
-let randomButton;
+export let resetButton;
+export let randomButton;
 export let saveButton;
+export let continueButton;
 
 export function createButtons(parentElement) {
   resetButton = createElement(
@@ -28,11 +28,11 @@ export function createButtons(parentElement) {
     parentElement,
     "Save game"
   );
-  createElement(
+  continueButton = createElement(
     "button",
     "side-panel__button side-panel__continue-button",
     parentElement,
-    "Continue game"
+    "Continue saved game"
   );
   createElement(
     "button",
@@ -45,64 +45,11 @@ export function createButtons(parentElement) {
   resetButton.addEventListener("click", clickResetButton);
   randomButton.addEventListener("click", clickRandomButton);
   saveButton.addEventListener("click", clickSaveButton);
+  continueButton.addEventListener("click", clickContinueButton);
 }
 
-// Reset button *** START
+// Disabled buttons
 
-export function clickResetButton() {
-  const size = getUserMatrix().length;
-  resetGameField(size);
-  initializeUserMatrix(size);
-  resetTime();
-  disabledButton(saveButton);
+export function disabledButton(button, state = true) {
+  button.disabled = state;
 }
-
-function resetGameField() {
-  const cells = document.querySelectorAll(".game__game-cell");
-  const crosses1 = document.querySelectorAll(".game__cross1");
-  const crosses2 = document.querySelectorAll(".game__cross2");
-
-  cells.forEach((cell) => {
-    cell.classList.remove("game__game-cell_active");
-  });
-
-  updateOpacity(crosses1);
-  updateOpacity(crosses2);
-}
-
-function updateOpacity(elements) {
-  elements.forEach((element) => {
-    element.classList.add("game__cross_opacity");
-  });
-}
-
-// Reset button *** END
-
-// Random button *** START
-
-function clickRandomButton() {
-  clickResetButton();
-
-  const puzzle = getRandomPuzzle();
-  changeGameSize(puzzle.size, puzzle.data);
-
-  // update current puzzle title
-  titleSize.innerHTML = `${puzzle.size}x${puzzle.size}`;
-  titleName.innerHTML = puzzle.name;
-}
-
-function getRandomPuzzle() {
-  const keys = Object.keys(matrices);
-  const randomKey = keys[Math.floor(Math.random() * keys.length)];
-  return matrices[randomKey];
-}
-
-// Random button *** END
-
-// Disabled *** START
-
-export function disabledButton(button, mode = "true") {
-  button.disabled = mode;
-}
-
-// Disabled *** END

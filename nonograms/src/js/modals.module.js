@@ -3,6 +3,7 @@ import { createElement } from "./page.module";
 import { matrices } from "./matrix.module";
 import { changeGameSize } from "./game.module";
 import { resetTime, titleName, titleSize } from "./stopWatch.module";
+import { continueButton, disabledButton } from "./buttons.module";
 
 let dialog;
 let dialogInnerBox;
@@ -100,4 +101,9 @@ export function createModalTitle(text) {
 function openSelectedPuzzle(size, puzzleData) {
   closeDialog();
   changeGameSize(size, puzzleData);
+  let savedGame = JSON.parse(localStorage.getItem("savedGame"));
+  // check if savedGame is not null
+  if (savedGame) {
+    disabledButton(continueButton, false);
+  }
 }

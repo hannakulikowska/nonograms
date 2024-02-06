@@ -3,7 +3,13 @@ import { createHeader } from "./header.module";
 import { matrices } from "./matrix.module";
 import { initializeUserMatrix } from "./userMatrix.module";
 import { resetTime, titleName, titleSize } from "./stopWatch.module";
-import { createButtons, disabledButton, saveButton } from "./buttons.module";
+import {
+  continueButton,
+  createButtons,
+  disabledButton,
+  resetButton,
+  saveButton,
+} from "./buttons.module";
 
 export { page };
 
@@ -50,10 +56,18 @@ export function createPage(size) {
     );
     titleSize.innerHTML = `${firstPuzzle.size}x${firstPuzzle.size}`;
     titleName.innerHTML = firstPuzzle.name;
-    disabledButton(saveButton);
+    disabledButton(saveButton, true);
+
+    // Retrieve data about saved game from Local Storage
+    let savedGame = JSON.parse(localStorage.getItem("savedGame"));
+    // check if savedGame is not null
+    if (!savedGame) {
+      disabledButton(continueButton, true);
+    }
   }
 
   resetTime();
+  disabledButton(resetButton, true);
 }
 
 // Create page *** END

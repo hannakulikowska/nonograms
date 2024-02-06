@@ -29,6 +29,7 @@ export function checkSolution(puzzleData) {
     saveTime();
     resultsData();
     finishGame();
+    localStorage.removeItem("savedGame");
   }
 }
 
@@ -40,4 +41,9 @@ function arraysAreEqual(arr1, arr2) {
     }
   }
   return true;
+}
+
+// Update userMatrix with a new matrix
+export function updateUserMatrix(newMatrix) {
+  userMatrix = newMatrix.map((row) => [...row]);
 }

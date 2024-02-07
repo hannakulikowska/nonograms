@@ -1,0 +1,43 @@
+.stop-watch {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 168px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  user-select: none;
+  border: 2px solid $color-main;
+
+  @media screen and (max-width: 700px) {
+    max-width: 108px;
+  }
+}
+
+.stop-watch__title,
+.stop-watch__minutes,
+.stop-watch__seconds {
+  font-weight: 300;
+  font-size: 1em;
+  color: $color-main;
+  text-transform: uppercase;
+  text-wrap: wrap;
+
+  @media screen and (max-width: 700px) {
+    font-size: 0.8em;
+  }
+}
+
+.stop-watch__title {
+  width: 100%;
+  max-width: 168px;
+  text-align: center;
+  line-height: 1.4;
+
+  @media screen and (max-width: 700px) {
+    max-width: 108px;
+  }
+}
+
+.stop-watch__title_name {
+  padding-bottom: 15px;
+}

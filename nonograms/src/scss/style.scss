@@ -1,0 +1,60 @@
+@import 'normalize.css';
+@import "variables.module";
+@import "header.module";
+@import "game.module";
+@import "menu.module";
+@import "modals.module";
+@import "stopWatch.module";
+@import "buttons.module";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+dialog:focus,
+button:focus {
+  outline: none;
+}
+
+.page {
+  font-family: "Open Sans", sans-serif;
+  background-color: $color-white;
+}
+
+.page__wrapper {
+  max-width: 1440px;
+  min-width: 450px;
+  height: auto;
+  margin: 0 auto;
+  padding: 40px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 50px;
+}
+
+@media screen and (max-width: 842px) {
+  .side-panel {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+}

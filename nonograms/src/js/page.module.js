@@ -14,13 +14,12 @@ import {
   resetButton,
   saveButton,
 } from "./buttons.module";
+import { createElement } from "./createElement.module";
 
 export { page };
 
 const page = document.body;
 export let sidePanel;
-
-// Create page *** START
 
 export function createPage(size) {
   // page
@@ -74,33 +73,3 @@ export function createPage(size) {
   resetTime();
   disabledButton(resetButton, true);
 }
-
-// Create page *** END
-
-// Create element *** START
-
-export function createElement(
-  type,
-  className,
-  parent,
-  textContent,
-  prepend = false
-) {
-  const element = document.createElement(type);
-  if (className) {
-    element.className = className;
-  }
-  if (textContent) {
-    element.textContent = textContent;
-  }
-  if (parent) {
-    if (prepend && parent.firstChild) {
-      parent.insertBefore(element, parent.firstChild);
-    } else {
-      parent.appendChild(element);
-    }
-  }
-  return element;
-}
-
-// Create element *** END

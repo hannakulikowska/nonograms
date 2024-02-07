@@ -1,5 +1,5 @@
 import { gameWrapper } from "./game.module";
-import { createElement } from "./page.module";
+import { createElement } from "./createElement.module";
 
 export let stopWatch;
 export let minutesSpan;

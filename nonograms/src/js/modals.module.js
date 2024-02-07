@@ -1,5 +1,5 @@
 import { page } from "./page.module";
-import { createElement } from "./page.module";
+import { createElement } from "./createElement.module";
 import { matrices } from "./matrix.module";
 import { changeGameSize } from "./game.module";
 import {

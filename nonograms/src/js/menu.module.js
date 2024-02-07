@@ -1,4 +1,4 @@
-import { createElement } from "./page.module";
+import { createElement } from "./createElement.module";
 import { createModal, displayPuzzleOptions } from "./modals.module";
 import { gameSizes } from "../../main";
 import { headerWrapper } from "./header.module";

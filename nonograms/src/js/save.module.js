@@ -1,5 +1,4 @@
-// import { getUserMatrix } from "./userMatrix.module";
-import { isWatchStarted, stopTime, titleName } from "./stopWatch.module";
+import { isWatchStarted, stopTime } from "./stopWatch.module";
 import { continueButton, disabledButton, saveButton } from "./buttons.module";
 import { clickResetButton } from "./reset.module";
 import { gameTime } from "./results.module";
@@ -28,7 +27,8 @@ export function clickSaveButton() {
     }
   });
 
-  const puzzleName = titleName ? titleName.textContent : "Unknown";
+  const currentPuzzle = JSON.parse(localStorage.getItem("currentPuzzle"));
+  const puzzleName = currentPuzzle ? currentPuzzle.name : "Unknown";
 
   // Save the updated game state to localStorage
   localStorage.setItem(

@@ -24,9 +24,10 @@ export function clickContinueButton() {
     const initialSeconds = parseInt(savedGame.time.seconds, 10);
     startTime(initialMinutes, initialSeconds);
 
-    titleSize.innerHTML = `${savedGame.size}x${savedGame.size}`;
-    titleName.innerHTML = savedGame.name;
-
+    if (titleSize && titleName) {
+      titleSize.innerHTML = `${savedGame.size}x${savedGame.size}`;
+      titleName.innerHTML = savedGame.name;
+    }
     // Find puzzle by name in `matrices`
     const puzzlesArray = Object.values(matrices);
     const puzzle = puzzlesArray.find((p) => p.name === savedGame.name);

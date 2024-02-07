@@ -1,7 +1,7 @@
 import { changeGameSize } from "./game.module";
 import { matrices } from "./matrix.module";
 import { clickResetButton } from "./reset.module";
-import { titleName, titleSize } from "./stopWatch.module";
+import { createCurrentPuzzleTitle, stopWatch } from "./stopWatch.module";
 
 export function clickRandomButton() {
   clickResetButton();
@@ -10,8 +10,7 @@ export function clickRandomButton() {
   changeGameSize(puzzle.size, puzzle.data);
 
   // update current puzzle title
-  titleSize.innerHTML = `${puzzle.size}x${puzzle.size}`;
-  titleName.innerHTML = puzzle.name;
+  createCurrentPuzzleTitle(stopWatch, puzzle.name, puzzle.size);
 
   // Update current puzzle information in Local Storage
   localStorage.setItem(

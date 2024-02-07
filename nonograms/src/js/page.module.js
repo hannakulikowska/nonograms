@@ -2,7 +2,11 @@ import { createGameFields, createGameWrapper } from "./game.module";
 import { createHeader } from "./header.module";
 import { matrices } from "./matrix.module";
 import { initializeUserMatrix } from "./userMatrix.module";
-import { resetTime, titleName, titleSize } from "./stopWatch.module";
+import {
+  createCurrentPuzzleTitle,
+  resetTime,
+  stopWatch,
+} from "./stopWatch.module";
 import {
   continueButton,
   createButtons,
@@ -54,8 +58,9 @@ export function createPage(size) {
       "currentPuzzle",
       JSON.stringify({ name: firstPuzzle.name, size: firstPuzzle.size })
     );
-    titleSize.innerHTML = `${firstPuzzle.size}x${firstPuzzle.size}`;
-    titleName.innerHTML = firstPuzzle.name;
+
+    createCurrentPuzzleTitle(stopWatch, firstPuzzle.name, firstPuzzle.size);
+
     disabledButton(saveButton, true);
 
     // Retrieve data about saved game from Local Storage

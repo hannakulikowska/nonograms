@@ -12,8 +12,6 @@ export function insertStopWatchElement() {
   // Wrapper
   stopWatch = createElement("div", "game__stop-watch stop-watch", gameWrapper);
 
-  createCurrentPuzzleTitle(stopWatch);
-
   // Stop-watch
   minutesSpan = createElement("span", "stop-watch__minutes", stopWatch, "00");
   secondsSpan = createElement("span", "stop-watch__seconds", stopWatch, "00");
@@ -89,28 +87,25 @@ export const resetTime = () => {
 
 // Current puzzle title - size and name
 
-export function createCurrentPuzzleTitle(parentElement) {
+export function createCurrentPuzzleTitle(
+  parentElement,
+  puzzleName,
+  puzzleSize
+) {
   // Remove existing titles
   const existingTitles = parentElement.querySelectorAll(".stop-watch__title");
   existingTitles.forEach((title) => title.remove());
 
-  // Get name and size of the current puzzle from Local Storage
-  const currentPuzzle = JSON.parse(localStorage.getItem("currentPuzzle"));
-  const puzzleName = currentPuzzle.name;
-  const puzzleSize = currentPuzzle.size;
-
   // Create new titles for current puzzle
-  titleSize = createElement(
-    "h3",
-    "stop-watch__title stop-watch__title_size",
-    parentElement,
-    `${puzzleSize}x${puzzleSize}`
-  );
+  const titleSize = document.createElement("h3");
+  titleSize.className = "stop-watch__title stop-watch__title_size";
+  titleSize.textContent = `${puzzleSize}x${puzzleSize}`;
 
-  titleName = createElement(
-    "h3",
-    "stop-watch__title stop-watch__title_name",
-    parentElement,
-    puzzleName
-  );
+  const titleName = document.createElement("h3");
+  titleName.className = "stop-watch__title stop-watch__title_name";
+  titleName.textContent = puzzleName;
+
+  // Insert titles as the first elements inside the parentElement
+  parentElement.insertBefore(titleSize, parentElement.firstChild);
+  parentElement.insertBefore(titleName, titleSize.nextSibling);
 }

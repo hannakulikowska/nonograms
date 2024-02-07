@@ -34,12 +34,12 @@ export function createButtons(parentElement) {
     parentElement,
     "Continue saved game"
   );
-  createElement(
-    "button",
-    "side-panel__button side-panel__theme-button",
-    parentElement,
-    "Dark theme"
-  );
+  // createElement(
+  //   "button",
+  //   "side-panel__button side-panel__theme-button",
+  //   parentElement,
+  //   "Dark theme"
+  // );
 
   // Event listeners for all buttons
   resetButton.addEventListener("click", clickResetButton);
